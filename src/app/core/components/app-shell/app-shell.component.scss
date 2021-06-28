@@ -1,0 +1,31 @@
+.navbar {
+  height: 50px;
+}
+
+.post-nav {
+  display: flex;
+  height: 100vh;
+  .sidebar {
+    border-top: 2px solid #c8e9ff;
+    border-right: 1px solid #c8e9ff;
+    border-radius: 0px 10px 0px 0px;
+
+    &.sidebar-minified {
+      cursor: pointer;
+
+      &:hover {
+        background: aliceblue;
+      }
+    }
+
+    &.sidebar-right {
+      border-radius: 0px;
+      border-left: 1px solid #c8e9ff;
+      border-right: 0px;
+    }
+  }
+  .content {
+    width: 100%;
+    overflow: auto;
+  }
+}

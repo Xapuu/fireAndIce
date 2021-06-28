@@ -1,0 +1,30 @@
+<h2>Books</h2>
+<app-table [tableConfig]="bookTableConfig"
+           [elements$]="books$"
+           [pageData]="bookPageData$ | async"
+           [favorites]="favoriteBooks"
+           (pageEvent)="handlePageEvent($event, 'bookPageData$')"
+           (rowEvent)="handleRowEvent($event, 'book')"
+           >
+</app-table>
+
+<h2>Characters</h2>
+<app-table [tableConfig]="characterTableConfig"
+           [elements$]="characters$"
+           [pageData]="characterPageData$ | async"
+           [favorites]="favoriteCharacters"
+           (pageEvent)="handlePageEvent($event, 'characterPageData$')"
+           (rowEvent)="handleRowEvent($event, 'character')"
+           >
+</app-table>
+
+<h2>Houses</h2>
+<app-table [tableConfig]="houseTableConfig"
+           [elements$]="houses$"
+           [pageData]="housePageData$ | async"
+           [favorites]="favoriteHouses"
+           (pageEvent)="handlePageEvent($event, 'housePageData$')"
+           (rowEvent)="handleRowEvent($event, 'house')"
+           >
+</app-table>
+

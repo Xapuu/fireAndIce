@@ -1,0 +1,12 @@
+<div class="post-nav">
+  <div [@leftAnimation]="focusedSidebar" [ngClass]="{'sidebar-minified': focusedSidebar !=='left'}" class="sidebar" (click)="focusSidebar('left')">
+    <ng-content select=".sidebar-left"></ng-content>
+  </div>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+  <div [@rightAnimation]="focusedSidebar" [ngClass]="{'sidebar-minified': focusedSidebar ==='left'}" class="sidebar sidebar-right" (click)="focusSidebar('right')">
+    <ng-content select=".sidebar-right"></ng-content>
+  </div>
+</div>
+

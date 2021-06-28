@@ -1,0 +1,13 @@
+<div>
+
+
+  <h1>
+    House name: {{house?.name}} <fa-icon (click)="goToHouse()" [icon]="faInfo"></fa-icon>
+  </h1>
+
+  <ng-container *ngIf="house?.overlord && level < 5">
+    <div style="margin-left: 10px;">
+      <app-house-hierarchy [houseId]="house.overlord" [level]="level + 1"></app-house-hierarchy>
+    </div>
+  </ng-container>
+</div>

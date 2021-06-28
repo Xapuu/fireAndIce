@@ -1,0 +1,8 @@
+<app-table [tableConfig]="tableConfig"
+           [elements$]="houses$"
+           [pageData]="pageData"
+           [favorites]="favorites$ | async"
+           (pageEvent)="handlePageEvent($event)"
+           (rowEvent)="handleRowEvent($event)"
+           >
+</app-table>

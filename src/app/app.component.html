@@ -1,0 +1,38 @@
+<app-shell>
+
+  <app-navbar>
+    <div>Profile</div>
+    <div>Favorites</div>
+  </app-navbar>
+
+  <app-sidebar class="sidebar-left">
+    <app-sidebar-link routerLinkActive="active-link" routerLink="house">
+      Houses
+    </app-sidebar-link>
+
+    <app-sidebar-link routerLinkActive="active-link" routerLink="book">
+      Books
+    </app-sidebar-link>
+
+    <app-sidebar-link routerLinkActive="active-link" routerLink="character">
+      Characters
+    </app-sidebar-link>
+  </app-sidebar>
+
+  <app-sidebar class="sidebar-right" [rightSidebar]="true">
+    <app-sidebar-link *appNotAuth routerLinkActive="active-link" routerLink="authorize">
+      Login
+    </app-sidebar-link>
+    <app-sidebar-link *appAuth routerLinkActive="active-link" routerLink="house">
+      Profile
+    </app-sidebar-link>
+
+    <app-sidebar-link *appAuth routerLinkActive="active-link" routerLink="favorites">
+      Favorites
+    </app-sidebar-link>
+
+    <app-sidebar-link *appAuth (click)="logout()" routerLinkActive="active-link" routerLink="authorize">
+      Logout
+    </app-sidebar-link>
+  </app-sidebar>
+</app-shell>

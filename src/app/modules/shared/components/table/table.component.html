@@ -1,0 +1,91 @@
+<div *ngIf="tableConfig.filters" style="height: 0px">
+  <div [@buttonMove]="filterState" [ngClass]="{'active': filterState === 'expanded' }" (click)="toggleFilters()" class="filter-button">
+    <div class="overlay">
+    </div>
+    <div class="main">
+      Toggle filters
+      <div [@indicatorRotate]="filterState" class="arrow-right"></div>
+    </div>
+  </div>
+  <div [@bodyExpansion]="filterState" class="collapse-container">
+    <div *ngFor="let filter of tableConfig.filters" [formGroup]="filterForm">
+      <ng-container [ngSwitch]="filter.type">
+        <ng-container *ngSwitchCase="'DATE'">
+          {{filter.name}}
+          <input [formControlName]="filter.key" type="date">
+        </ng-container>
+        <ng-container *ngSwitchDefault>
+          {{filter.name}}
+          <input [formControlName]="filter.key" type="text">
+        </ng-container>
+      </ng-container>
+
+    </div>
+  </div>
+</div>
+<div>
+</div>
+
+<div class="table-container">
+  <table>
+    <tr>
+      <th *ngFor="let column of tableConfig.columns">
+        {{column.name}}
+      </th>
+    </tr>
+
+    <ng-container *ngTemplateOutlet="tableRow; context: {$implicit: elements$ | async }">
+    </ng-container>
+  </table>
+
+
+</div>
+
+<div [formGroup]="paginatorForm" class="paginator">
+  <label style="margin-right: 10px;">Page size:</label>
+  <select formControlName="pageSize">
+    <option value="10">10</option>
+    <option value="15">15</option>
+    <option value="20">20</option>
+  </select>
+
+  <div class="arrow-left pagination-button" (click)="previousPage()" [ngClass]="{disabled: pageData?.page <= 1}"></div>
+
+  <div style="margin-left: 10px;">
+    {{pageData.page}}
+  </div>
+
+  <div class="arrow-right pagination-button" (click)="nextPage()" [ngClass]="{disabled: (elements$ | async)?.length < +pageData?.pageSize}"></div>
+
+</div>
+
+
+<ng-template #tableRow let-elements>
+  <tr *ngFor="let row of elements; let i = index">
+    <td *ngFor="let cell of tableConfig.columns; let celIndex = index">
+        <ng-container [ngSwitch]="cell.type">
+          <ng-container *ngSwitchCase="'ACTION'">
+            <ng-container *ngFor="let action of tableConfig.columns[celIndex].actions" >
+
+              <ng-container *appAuth >
+
+                <fa-icon *ngIf="action.type === 'toggleFavorites'" [ngClass]="{'is-favorite': favorites && favorites[elements[i].url]}" [icon]="action.icon" style="margin-left: 10px; cursor: pointer;" (click)="handleAction(action, elements[i])"></fa-icon>
+              </ng-container>
+              <fa-icon *ngIf="action.type !== 'toggleFavorites'" [icon]="action.icon" style="margin-left: 10px; cursor: pointer;" (click)="handleAction(action, elements[i])"></fa-icon>
+            </ng-container>
+
+          </ng-container>
+          <ng-container *ngSwitchCase="'TEXT-LIST'">{{elements[i][cell.key].join(',')}}</ng-container>
+          <ng-container *ngSwitchCase="'NAVIGATE-LIST'">
+            <span style="cursor: pointer;" *ngFor="let link of elements[i][cell.key]" (click)="navigateTo(tableConfig.columns[celIndex].navigationPrefix, link)">{{tableConfig.columns[celIndex].label}}</span>
+          </ng-container>
+
+          <ng-container *ngSwitchCase="'ELEMENT-COUNT'">{{elements[i][cell.key].length}}</ng-container>
+
+          <ng-container *ngSwitchCase="'DATE'">{{elements[i][cell.key] | date}}</ng-container>
+
+          <ng-container *ngSwitchDefault>{{elements[i][cell.key]}}</ng-container>
+        </ng-container>
+    </td>
+  </tr>
+</ng-template>
