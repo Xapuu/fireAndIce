@@ -28,7 +28,8 @@ import { AuthNotDirective } from './directives/not-auth.directive';
     TableComponent,
     HouseComponent,
     AuthDirective,
-    AuthNotDirective
+    AuthNotDirective,
+    CharacterComponent
   ]
 })
 export class SharedModule { }

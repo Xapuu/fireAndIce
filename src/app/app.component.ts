@@ -12,7 +12,6 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit(){
-    this.authService.login('a', 'b').subscribe()
   }
 
   logout() {
