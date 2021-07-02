@@ -49,3 +49,5 @@ Flows
 * There is a lot of inline CSS that should be moved to the scss files
 
 * The work seen here was done under 10 hours in the time span of 3 days
+
+* Use the master branch !!!
