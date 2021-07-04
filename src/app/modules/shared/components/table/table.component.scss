@@ -1,0 +1,147 @@
+.table-container {
+  max-height: calc(100vh - 50px);
+  overflow: auto;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  max-height: calc(100vh - 50px);
+  overflow: auto;
+}
+
+tr:first-of-type {
+  position: sticky;
+  top: -1px;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #c8e9ff;
+}
+tr:nth-child(odd) {
+  background-color: aliceblue;
+}
+
+.collapse-container {
+  overflow: hidden;
+  position: absolute;
+  visibility: visible;
+  z-index: 1;
+
+  background-color: rgba(104, 197, 240, 0.596);
+  backdrop-filter: blur(5px);
+
+  border-radius: 5px;
+}
+
+.filter-button {
+  display: flex;
+  border: 2px solid #c8e9ff;
+  border-left: 0px;
+  border-bottom: 0px;
+  height: 0px;
+
+  border-radius: 0px 10px 0px 0px;
+  height: 20px;
+  min-height: 30px;
+  align-items: center;
+  width: 200px;
+  cursor: pointer;
+  position: relative;
+  background: white;
+  z-index: 1;
+
+  &.active {
+    background: aliceblue;
+  }
+
+  &:hover {
+    background: #c1d6e8;
+  }
+}
+
+.overlay {
+  background: white;
+  height: 100%;
+  position: relative;
+  left: -9px;
+  border-top: 2px solid #c8e9ff;
+  width: 10px;
+  top: -1px;
+}
+
+.main {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.paginator {
+  height: 50px;
+  border-bottom: 2px solid #c8e9ff;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 30px;
+}
+
+.arrow-right {
+  margin-left: 10px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid #c8e9ff;
+  position: relative;
+  font-weight: 600;
+
+  &.pagination-button {
+    cursor: pointer;
+
+    &:hover {
+      border-left: 10px solid #c1d6e8;
+    }
+  }
+
+  &.disabled {
+    pointer-events: none;
+    border-left: 10px solid #c1d6e8;
+    opacity: 0.7;
+  }
+}
+
+.arrow-left {
+  margin-left: 10px;
+
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid #c8e9ff;
+
+  &.pagination-button {
+    cursor: pointer;
+
+    &:hover {
+      border-right: 10px solid #c1d6e8;
+    }
+  }
+
+  &.disabled {
+    pointer-events: none;
+    border-right: 10px solid #c1d6e8;
+    opacity: 0.7;
+  }
+}
+
+.is-favorite {
+  color: red;
+}

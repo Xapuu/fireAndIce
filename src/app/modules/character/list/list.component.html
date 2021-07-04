@@ -1,0 +1,9 @@
+<app-table [tableConfig]="tableConfig"
+           [elements$]="characters$"
+           [pageData]="pageData"
+           [favorites]="favorites$ | async"
+           (pageEvent)="handlePageEvent($event)"
+           (rowEvent)="handleRowEvent($event)"
+           (navigateToEntity)="navigateTo($event)"
+           >
+</app-table>

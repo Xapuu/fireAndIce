@@ -1,0 +1,24 @@
+<div *ngIf="rightSidebar"
+     style="position: absolute; top: 0;">
+  <div [@buttonMove]="filterState"
+       [ngClass]="{'active': filterState === 'expanded' }"
+       (click)="toggleFilters()"
+       class="filter-button">
+    <div class="main">
+      <div [@indicatorRotate]="filterState"
+           class="arrow-left"></div>
+      Favorite details
+    </div>
+    <div class="overlay">
+    </div>
+  </div>
+  <div [@bodyExpansion]="filterState"
+       class="collapse-container">
+    <div>Houses {{(userFavorites$ | async).houses || 0}}</div>
+    <div>Books {{(userFavorites$ | async).books || 0}}</div>
+    <div>Characters {{(userFavorites$ | async).characters || 0}}</div>
+  </div>
+</div>
+
+
+<ng-content></ng-content>

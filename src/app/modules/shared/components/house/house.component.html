@@ -1,0 +1,48 @@
+<div>
+
+  <h1>
+    House name: {{house?.name}}
+  </h1>
+
+  <h2>
+    Region: {{house?.region}}
+  </h2>
+
+
+  <h1>
+    Coat of arms:
+  </h1>
+
+  <div class="coat">
+    "{{house?.coatOfArms}}"
+  </div>
+
+
+
+  <div style="display: flex;">
+    <div>
+      <h2>Current Lord</h2>
+      <app-character *ngIf="house?.currentLord" [characterId]="house.currentLord"></app-character>
+    </div>
+
+    <div style="margin-left: 100px;">
+      <h2>Heir</h2>
+      <app-character *ngIf="house?.heir" [characterId]="house.heir"></app-character>
+
+    </div>
+  </div>
+  <h2>Sworn Members</h2>
+  <div>
+    <ng-container *ngFor="let member of house?.swornMembers">
+
+      <div class="character">
+        <app-character [characterId]="member"></app-character>
+      </div>
+    </ng-container>
+  </div>
+
+  <div *ngIf="house?.overlord" style="border: 1px solid orange;">
+    <h2>House hierarchy</h2>
+    <app-house-hierarchy [houseId]="house.overlord"></app-house-hierarchy>
+  </div>
+</div>

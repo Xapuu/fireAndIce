@@ -1,0 +1,15 @@
+<h5>
+  Name: {{character?.name}} <fa-icon (click)="goToCharacter()" [icon]="faInfo"></fa-icon>
+</h5>
+<h5>
+  Gender: {{character?.gender}}
+</h5>
+<h5>
+  Culture: {{character?.culture}}
+</h5>
+<h5>
+  Title: {{character?.titles.join(',')}}
+</h5>
+
+
+<!-- TODO add house in character view mode -->

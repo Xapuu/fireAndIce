@@ -1,0 +1,14 @@
+:host{
+  padding: 10px;
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  &:hover{
+    background: #c1d6e8;
+  }
+
+  &.active-link{
+    background: aliceblue;
+  }
+}

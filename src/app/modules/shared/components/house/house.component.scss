@@ -1,0 +1,20 @@
+:host {
+  overflow: scroll;
+  max-height: 100vh;
+}
+
+.character {
+  display: inline-block;
+  width: 200px;
+  height: 100px;
+  border: 1px solid red;
+  vertical-align: bottom;
+}
+
+.coat{
+  padding: 10px;
+  font-size: 30px;
+  background: aliceblue;
+  display: flex;
+  justify-content: center;
+}
